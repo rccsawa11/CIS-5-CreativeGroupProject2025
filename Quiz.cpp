@@ -1,20 +1,69 @@
-// Quiz.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+/* Creative Group Project - 
+CIS / CSC - 5 Spring 2025 
+Professor Sandra Ruiz 
+*/
 
 #include <iostream>
+#include <string>
+#include <ctime>
+#include <cstdlib>
+using namespace std; 
+
+/* Program will : 
+- greet the user
+- let them choose a language
+- ask 7 math questions
+- displays the feedback after each question answered
+- saves their score to a file and presents it to them
+*/
+
+string helloUser()
+{
+	string name;
+	cout << "Please enter your name: "; 
+	getline(cin, name);
+	cout << "Hello and Welcome to the SUPER AWESOME MATH QUIZ " << name << "!" << endl;
+	return name; 
+}
+
+string selectLanguage()
+{
+	string langChoice;
+	cout << "This quiz has 3 world-wide-spoken language to choose from. \n" <<  "Please enter the number next to the language you chose.\n" << "1. English\n" << "2. Spanish\n" << "3. French\n" << endl;
+	getline(cin, langChoice); 
+	int choice = stoi(langChoice); // converts the choice into a number for if/else statements
+	string lang; // will be the language stored
+	if (choice == 1)
+	{
+		lang = "English";
+		cout << "You've selected English." << endl;
+	}
+	else if (choice == 2)
+	{
+		lang = "Spanish";
+		cout << "Has seleccionado el espanol." << endl;
+
+	}
+	else
+	{
+		lang = "French"; 
+		cout << "Vous avez choisi le francais." << endl;
+	}
+
+	return lang; 
+}
+
+
+
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	helloUser(); // calling the funciton for name
+	selectLanguage(); //calling funciton for language
+	srand(time(0)); //a random number generator
+
+
+	return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
