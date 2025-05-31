@@ -13,6 +13,11 @@ Final score summary is shown after all questions.
 User score, name, and language are saved to 'scores.txt'.
 C++ Programming Concepts Used
 
+#### HOW TO RUN: 
+-Download the Quiz.cpp file where all of the code is stored. 
+-Open terminal or command prompt
+-Complie program
+
 Dependencies:
 
 github
@@ -25,4 +30,6 @@ Leen Sawas
 Bruno Ceron
 
 
-#### README credit to Bruno Ceron
+#### README credit to Bruno Ceron 
+
+
