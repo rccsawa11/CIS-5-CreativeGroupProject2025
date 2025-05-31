@@ -1,0 +1,12 @@
+.vs/
+*.user
+*.suo
+*.exe
+*.obj
+*.log
+*.ipch
+*.pch
+*.vcxproj.*
+x64/
+Debug/
+Release/
