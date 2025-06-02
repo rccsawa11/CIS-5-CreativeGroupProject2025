@@ -69,7 +69,7 @@ int main()
 
 const int numQues = 7; // number of questions in the quiz 
 
-string funFactSpanish[numQues] =
+string funFactSpanish [numQues] =
 {
 	"¿Sabías que el francés se habla en cinco continentes?", 
 	"¡El español es el segundo idioma más hablado del mundo!", 
@@ -80,7 +80,7 @@ string funFactSpanish[numQues] =
 	"¡India tiene más de 22 idiomas oficiales!"
 }; 
 
-string funFactEnglish[numQues]
+string funFactEnglish [numQues] = 
 {
 	"Did you know? French is spoken on 5 continents!", 
 	"Spanish is the 2nd most spoken language in the world!", 
@@ -91,7 +91,7 @@ string funFactEnglish[numQues]
 	"India has more than 22 official languages!"
 };
 
-string funFactFrench[numQues]
+string funFactFrench[numQues] = 
 {
 	"Le français est parlé sur cinq continents !", 
 	"L'espagnol est la 2e langue la plus parlée au monde !", 
@@ -101,5 +101,3 @@ string funFactFrench[numQues]
 	"La Finlande commence l'école tard mais réussit très bien !", 
 	"L'Inde a plus de 22 langues officielles !"
 }; 
-
-
