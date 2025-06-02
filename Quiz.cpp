@@ -67,14 +67,39 @@ int main()
 	return 0;
 }
 
-const int numQues = 7; // fun facts in English
+const int numQues = 7; // number of questions in the quiz 
 
-string funFactEnglish[numQues] = 
+string funFactSpanish[numQues] =
+{
+	"¿Sabías que el francés se habla en cinco continentes?", 
+	"¡El español es el segundo idioma más hablado del mundo!", 
+	"¡El inglés se usa en la aviación y la diplomacia!", 
+	"¡En Japón, los estudiantes limpian sus salones!", 
+	"¡En Kenia, los niños aprenden en suajili e inglés!", 
+	"¡Finlandia comienza las clases tarde y aún así sobresale!", 
+	"¡India tiene más de 22 idiomas oficiales!"
+}; 
 
-"Did you know? French is spoken on 5 continents!", 
-"Spanish is the 2nd most spoken language in the world!", 
-"English is used in international aviation and diplomacy!", 
-"In Japan, students clean their classrooms every day!", 
-"In Kenya, children learn in Swahili and English!", 
-"Finland starts school later but scores high!", 
-"India has more than 22 official languages!"
+string funFactEnglish[numQues]
+{
+	"Did you know? French is spoken on 5 continents!", 
+	"Spanish is the 2nd most spoken language in the world!", 
+	"English is used in international aviation and diplomacy!", 
+	"In Japan, students clean their classrooms every day!", 
+	"In Kenya, children learn in Swahili and English!", 
+	"Finland starts school later but scores high!", 
+	"India has more than 22 official languages!"
+};
+
+string funFactFrench[numQues]
+{
+	"Le français est parlé sur cinq continents !", 
+	"L'espagnol est la 2e langue la plus parlée au monde !", 
+	"L'anglais est utilisé dans l'aviation et la diplomatie !", 
+	"Au Japon, les élèves nettoient leurs classes chaque jour !", 
+	"Au Kenya, les enfants apprennent le swahili et l'anglais !", 
+	"La Finlande commence l'école tard mais réussit très bien !", 
+	"L'Inde a plus de 22 langues officielles !"
+}; 
+
+
