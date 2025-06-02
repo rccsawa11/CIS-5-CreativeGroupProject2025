@@ -70,7 +70,7 @@ int main()
 const int numQues = 7; // fun facts in English
 
 string funFactEnglish[numQues] = 
-
+{
 "Did you know? French is spoken on 5 continents!", 
 "Spanish is the 2nd most spoken language in the world!", 
 "English is used in international aviation and diplomacy!", 
@@ -78,3 +78,4 @@ string funFactEnglish[numQues] =
 "In Kenya, children learn in Swahili and English!", 
 "Finland starts school later but scores high!", 
 "India has more than 22 official languages!"
+};
