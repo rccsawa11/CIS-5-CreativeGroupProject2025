@@ -1,23 +1,32 @@
-/* Creative Group Project - 
-CIS / CSC - 5 Spring 2025 
-Professor Sandra Ruiz 
+/* 
+
+Creative Group Project 
+
+CIS / CSC - 5 Spring 2025 Professor Sandra Ruiz 
+
+Authors: 
+Anastasio Jose Martinez 
+Leen Sawas 
+Bruno Ceron
+
+ Program will :
+- greet the user
+- let them choose a language
+- ask 7 math questions at a 4th grade level- all arithmetic
+- displays the feedback after each question answered
+- displays a fun fact from around the world after a correct answer
+- saves their score and presents it to them at the end of the program
+
 */
 
 #include <iostream>
 #include <string>
 #include <cstdlib>
 using namespace std; 
-
-/* Program will : 
-- greet the user
-- let them choose a language
-- ask 7 math questions
-- displays the feedback after each question answered
-- saves their score to a file and presents it to them
-*/
+const int numQues = 7; //number of questions = 7
 
 string helloUser()
-{ // getting name of user
+{ // getting name of user by using cin for them to type in and retrive a string to store into 'name' variable
 	string name;
 	cout << "Please enter your name: "; 
 	getline(cin, name);
@@ -28,6 +37,10 @@ string helloUser()
 string selectLanguage()
 {
 	// giving the user an option between 3 languages to play in
+	// They will input their choice from 1-3, 
+	// value stored into langChoice as a string and then converted to an int by stoi()
+	// if statements to confirm language choice with user and store language choice
+	// 1 = English, 2 = Spanish, 3 = French
 
 	string langChoice;
 	cout << "This quiz has 3 world-wide-spoken language to choose from. \n" <<  "Please enter the number next to the language you chose.\n" << "1. English\n" << "2. Spanish\n" << "3. French\n" << endl;
@@ -38,27 +51,25 @@ string selectLanguage()
 	if (choice == 1)
 	{
 		lang = "English";
-		cout << "You've selected English." << endl;
+		cout << "\nYou've selected English." << endl;
 	}
 	else if (choice == 2)
 	{
 		lang = "Spanish";
-		cout << "Has seleccionado el espanol." << endl;
+		cout << "\nHas seleccionado el espanol." << endl;
 
 	}
 	else
 	{
 		lang = "French"; 
-		cout << "Vous avez choisi le francais." << endl;
+		cout << "\nVous avez choisi le francais." << endl;
 	}
 
 	return lang; 
 }
 
-
-const int numQues = 7; //number of questions = 7
-
-//the arrays of different fun facts around the world - repeated logic in different language
+//the arrays of different fun facts around the world 
+// repeated logic in all different languages
 string funFactSpanish [ ] =
 {
 	"¿Sabías que el francés se habla en cinco continentes?\n", 
@@ -102,8 +113,9 @@ bool askQues(string language, bool usedFacts[])
 
 	//assigns numbers from 0-99
 
-	int firstNum = rand() % 20;
-	int secondNum = rand() % 20;
+	const int maxNum = 20;
+	int firstNum = rand() % maxNum;
+	int secondNum = rand() % maxNum;
 	int correctAns; 
 	int input;
 	int factIndex; 
@@ -121,27 +133,27 @@ bool askQues(string language, bool usedFacts[])
 	// 2 = subtraction, 
 	// 3 = division, 
 
-	int operRator = rand() % 4;
+	int operRator = rand() % 4; //picks one randomly from the 4 options
 	
 	if (language == "English") 
 	{
 		if (operRator == 1)
 		{
 			cout << "What would " << firstNum << "+" << secondNum << " be?" << endl;
-			correctAns = firstNum + secondNum;
-			cin >> input;
-			cin.ignore(); 
-			if (input == correctAns)
+			correctAns = firstNum + secondNum; // this is the actual right answer
+			cin >> input; // player will input their answer
+			cin.ignore(); //ignores the extra line produced by cin 
+			if (input == correctAns) //comparing answer to right answer in if/else statement
 			{
 				cout << "\nGreat Job! +1 point to total score.\n" << endl;
-				cout << funFactEnglish[factIndex] << endl; 
+				cout << funFactEnglish[factIndex] << endl; // returns a unique fun fact
 			}
 			else
 			{
 				cout << "\nOops... wrong answer!\n" << endl;
 			}
 
-			return input == correctAns;
+			return input == correctAns; // returns either true or false
 		}
 		else if (operRator == 2)
 		{
@@ -162,7 +174,7 @@ bool askQues(string language, bool usedFacts[])
 		}
 		else if (operRator == 3)
 		{
-			if (secondNum == 0)
+			if (secondNum == 0) // preventing divison by zero -> UNDEF and 4th graders do not know this
 			{
 				secondNum = 1;
 			}
@@ -350,11 +362,15 @@ bool askQues(string language, bool usedFacts[])
 				cout << "\nOups... mauvaise réponse.\n" << endl;
 			}
 			return input == correctAns;
-		}
+		}//end french questions
 	}
 
 }
 
+// this function counts the points and returns a final score, 
+// tracks the points from the boolean function, true = 1 and false = 0
+// It also calls askQues() function 7 times and adds score using a for loop
+// Uses constant numQues
 int showScore(string language)
 {
 	int score = 0;
@@ -363,7 +379,6 @@ int showScore(string language)
 	{
 		if (askQues(language, usedFacts))
 		{
-			// tracks the points from the boolean function, true = 1 and false = 0
 			score++;
 		}
 	}
