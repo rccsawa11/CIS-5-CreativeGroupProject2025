@@ -54,33 +54,21 @@ string selectLanguage()
 }
 
 
+const int numQues = 7; //number of questions = 7
 
 
-
-int main()
+string funFactSpanish [ ] =
 {
-	helloUser(); // calling the funciton for name
-	selectLanguage(); //calling funciton for language
-	srand(time(0)); //a random number generator
-
-
-	return 0;
-}
-
-const int numQues = 7; // number of questions in the quiz 
-
-string funFactSpanish [numQues] =
-{
-	"Â¿SabÃ­as que el francÃ©s se habla en cinco continentes?", 
-	"Â¡El espaÃ±ol es el segundo idioma mÃ¡s hablado del mundo!", 
-	"Â¡El inglÃ©s se usa en la aviaciÃ³n y la diplomacia!", 
-	"Â¡En JapÃ³n, los estudiantes limpian sus salones!", 
-	"Â¡En Kenia, los niÃ±os aprenden en suajili e inglÃ©s!", 
-	"Â¡Finlandia comienza las clases tarde y aÃºn asÃ­ sobresale!", 
-	"Â¡India tiene mÃ¡s de 22 idiomas oficiales!"
+	"¿Sabías que el francés se habla en cinco continentes?", 
+	"¡El español es el segundo idioma más hablado del mundo!", 
+	"¡El inglés se usa en la aviación y la diplomacia!", 
+	"¡En Japón, los estudiantes limpian sus salones!", 
+	"¡En Kenia, los niños aprenden en suajili e inglés!", 
+	"¡Finlandia comienza las clases tarde y aún así sobresale!", 
+	"¡India tiene más de 22 idiomas oficiales!"
 }; 
 
-string funFactEnglish [numQues] = 
+string funFactEnglish [ ] = 
 {
 	"Did you know? French is spoken on 5 continents!", 
 	"Spanish is the 2nd most spoken language in the world!", 
@@ -91,45 +79,315 @@ string funFactEnglish [numQues] =
 	"India has more than 22 official languages!"
 };
 
-string funFactFrench[numQues] = 
+string funFactFrench [ ] = 
 {
-	"Le franÃ§ais est parlÃ© sur cinq continents !", 
-	"L'espagnol est la 2e langue la plus parlÃ©e au monde !", 
-	"L'anglais est utilisÃ© dans l'aviation et la diplomatie !", 
-	"Au Japon, les Ã©lÃ¨ves nettoient leurs classes chaque jour !", 
+	"Le français est parlé sur cinq continents !", 
+	"L'espagnol est la 2e langue la plus parlée au monde !", 
+	"L'anglais est utilisé dans l'aviation et la diplomatie !", 
+	"Au Japon, les élèves nettoient leurs classes chaque jour !", 
 	"Au Kenya, les enfants apprennent le swahili et l'anglais !", 
-	"La Finlande commence l'Ã©cole tard mais rÃ©ussit trÃ¨s bien !", 
+	"La Finlande commence l'école tard mais réussit très bien !", 
 	"L'Inde a plus de 22 langues officielles !"
 }; 
 
-bool askQuestion(string language) {
-    // Step 1: Generate two random numbers
-    int num1; 3
-    int num2; 5
+// this funciton will ask the user the arithmetic 4th grade questions
+// it is a boolean because it returns true or false in terms of getting the answer correct
+// Uses random num generator to keep making questions
+bool askQues(string language, bool usedFacts[])
+{
+	cout << "And....Here's a question!!!" << endl;
 
-    // Step 2: Ask the question in the selected language
-    cout << "English is used in international aviation and diplomacy!" << endl;
-    // TODO: Print question based on language
-    
-    // Step 3: Get user input
-    int userAnswer; 
-    // TODO: Use cin to get their answer
-    cin >> userAnswer;
-    // Step 4: Check if answer is correct
-    int correctAnswer; // TODO: calculate the correct answer
+	//assigns numbers from 0-99
 
-    if (userAnswer == correctAnswer) {
-        // Step 5: Show positive feedback message
-        cout <<  "Your work is looking good!" << endl;
-        // TODO: Print a fun fact from the correct language array
-        cout << "India has more than 22 official languages!" << endl;
+	int firstNum = rand() % 20;
+	int secondNum = rand() % 20;
+	int correctAns; 
+	int input;
+	int factIndex; 
+	// we kept getting repeated facts in our program so we had to add a
+	// way to prevent repeated facts
+	do
+	{
+		factIndex = rand() % numQues;
+	} while (usedFacts[factIndex]);
+	usedFacts[factIndex] = true;
 
-        return true; // correct
-    } else {
-        // Step 6: Show encouragement for incorrect answer
-        cout << "No worries, keep trying!" << endl;
-        // TODO: Print "Oops! Try the next one..." in chosen language
-        cout << "Oops! Try the next one..." << endl;
+	// we are assigning 0, 1, 2, and 3 to operators in math:
+	// 0 = multiplication, 
+	// 1 = addition, 
+	// 2 = subtraction, 
+	// 3 = division, 
 
-        return false; // incorrect
-    }
+	int operRator = rand() % 4;
+	
+	if (language == "English") 
+	{
+		if (operRator == 1)
+		{
+			cout << "What would " << firstNum << "+" << secondNum << " be?" << endl;
+			correctAns = firstNum + secondNum;
+			cin >> input;
+			cin.ignore(); 
+			if (input == correctAns)
+			{
+				cout << "\nGreat Job! +1 point to total score.\n" << endl;
+				cout << funFactEnglish[factIndex] << endl; 
+			}
+			else
+			{
+				cout << "\nOops... wrong answer!\n" << endl;
+			}
+
+			return input == correctAns;
+		}
+		else if (operRator == 2)
+		{
+			cout << "What would " << firstNum << "-" << secondNum << " be?" << endl;
+			correctAns = firstNum - secondNum;
+			cin >> input; 
+			cin.ignore();
+			if (input == correctAns)
+			{
+				cout << "\nGreat Job! +1 point to total score.\n" << endl;
+				cout << funFactEnglish[factIndex] << endl;
+			}
+			else
+			{
+				cout << "\nOops... wrong answer!\n" << endl;
+			}
+			return input == correctAns;
+		}
+		else if (operRator == 3)
+		{
+			if (secondNum == 0)
+			{
+				secondNum = 1;
+			}
+			cout << "What would " << firstNum << "/" << secondNum << " be? \nDisregard the decimal points.\n" << endl;
+			correctAns = firstNum / secondNum;
+			cin >> input; 
+			cin.ignore();
+			if (input == correctAns)
+			{
+				cout << "\nGreat Job! +1 point to total score.\n" << endl;
+				cout << funFactEnglish[factIndex] << endl;
+			}
+			else
+			{
+				cout << "\nOops... wrong answer!\n" << endl;
+			}
+			return input == correctAns;
+		}
+		else
+		{
+			cout << "What would " << firstNum << "x" << secondNum << " be?" << endl;
+			correctAns = firstNum * secondNum;
+			cin >> input; 
+			cin.ignore();
+			if (input == correctAns)
+			{
+				cout << "\nGreat Job! +1 point to total score.\n" << endl;
+				cout << funFactEnglish[factIndex] << endl;
+			}
+			else
+			{
+				cout << "\nOops... wrong answer!\n" << endl;
+			}
+			return input == correctAns;
+		}
+	} // end code for english 
+	else if (language == "Spanish")
+	{
+		if (operRator == 1)
+		{
+			cout << "¿Cuánto es " << firstNum << "+" << secondNum << " ?" << endl;
+			correctAns = firstNum + secondNum;
+			cin >> input;
+			cin.ignore();
+			if (input == correctAns)
+			{
+				cout << "\n¡Buen trabajo! + 1 punto para ti.\n" << endl;
+				cout << funFactSpanish[factIndex] << endl;
+			}
+			else
+			{
+				cout << "\nUy... respuesta incorrecta.\n" << endl;
+			}
+
+			return input == correctAns;
+		}
+		else if (operRator == 2)
+		{
+			cout << "¿Cuánto es " << firstNum << "-" << secondNum << " ?" << endl;
+			correctAns = firstNum - secondNum;
+			cin >> input;
+			cin.ignore();
+			if (input == correctAns)
+			{
+				cout << "\n¡Buen trabajo! + 1 punto para ti.\n" << endl;
+				cout << funFactSpanish[factIndex] << endl;
+			}
+			else
+			{
+				cout << "\nUy... respuesta incorrecta.\n" << endl;
+			}
+			return input == correctAns;
+		}
+		else if (operRator == 3)
+		{
+			if (secondNum == 0)
+			{
+				secondNum = 1;
+			}
+			cout << "¿Cuánto es " << firstNum << "/" << secondNum << " ?" << endl;
+			correctAns = firstNum / secondNum;
+			cin >> input;
+			cin.ignore();
+			if (input == correctAns)
+			{
+				cout << "\n¡Buen trabajo! + 1 punto para ti.\n" << endl;
+				cout << funFactSpanish[factIndex] << endl;
+			}
+			else
+			{
+				cout << "\nUy... respuesta incorrecta.\n" << endl;
+			}
+			return input == correctAns;
+		}
+		else
+		{
+			cout << "¿Cuánto es " << firstNum << "x" << secondNum << " ?" << endl;
+			correctAns = firstNum * secondNum;
+			cin >> input;
+			cin.ignore();
+			if (input == correctAns)
+			{
+				cout << "\n¡Buen trabajo! + 1 punto para ti.\n" << endl;
+				cout << funFactSpanish[factIndex] << endl;
+			}
+			else
+			{
+				cout << "\nUy... respuesta incorrecta.\n" << endl;
+			}
+			return input == correctAns;
+		}
+	}
+	else // french
+	{
+		if (operRator == 1)
+		{
+			cout << "Combien font " << firstNum << "+" << secondNum << " ?" << endl;
+			correctAns = firstNum + secondNum;
+			cin >> input;
+			cin.ignore();
+			if (input == correctAns)
+			{
+				cout << "\nBravo ! +1 point pour toi.\n" << endl;
+				cout << funFactFrench[factIndex] << endl;
+			}
+			else
+			{
+				cout << "\nOups... mauvaise réponse.\n" << endl;
+			}
+
+			return input == correctAns;
+		}
+		else if (operRator == 2)
+		{
+			cout << "Combien font " << firstNum << "-" << secondNum << " ?" << endl;
+			correctAns = firstNum - secondNum;
+			cin >> input;
+			cin.ignore();
+			if (input == correctAns)
+			{
+				cout << "\nBravo ! +1 point pour toi.\n" << endl;
+				cout << funFactFrench[factIndex] << endl;
+			}
+			else
+			{
+				cout << "\nOups... mauvaise réponse.\n" << endl;
+			}
+			return input == correctAns;
+		}
+		else if (operRator == 3)
+		{
+			if (secondNum == 0) // prevents divison by 0
+			{
+				secondNum = 1;
+			}
+			cout << "Combien font " << firstNum << "/" << secondNum << " ?" << endl;
+			correctAns = firstNum / secondNum;
+			cin >> input;
+			cin.ignore();
+			if (input == correctAns)
+			{
+				cout << "\nBravo ! +1 point pour toi.\n" << endl;
+				cout << funFactFrench[factIndex] << endl;
+			}
+			else
+			{
+				cout << "\nOups... mauvaise réponse.\n" << endl;
+			}
+			return input == correctAns;
+		}
+		else
+		{
+			cout << "Combien font " << firstNum << "x" << secondNum << " ?" << endl;
+			correctAns = firstNum * secondNum;
+			cin >> input;
+			cin.ignore();
+			if (input == correctAns)
+			{
+				cout << "\nBravo ! +1 point pour toi.\n" << endl;
+				cout << funFactFrench[factIndex] << endl;
+			}
+			else
+			{
+				cout << "\nOups... mauvaise réponse.\n" << endl;
+			}
+			return input == correctAns;
+		}
+	}
+
+}
+
+int showScore(string language)
+{
+	int score = 0;
+	bool usedFacts[numQues] = { false }; 
+	for (int i = 0; i < numQues; i++)
+	{
+		if (askQues(language, usedFacts))
+		{
+			score++;
+		}
+	}
+
+	if (language == "English")
+	{
+		cout << "\nYou earned a total of: " << score << " points!\n Great job and thank you for playing! :)\n" << endl;
+	}
+
+	else if (language == "Spanish")
+	{
+		cout << "\n¡Ganaste un total de: " << score << " puntos!\n ¡Buen trabajo y gracias por jugar! :)\n" << endl;
+
+	}
+
+	else //french
+	{
+		cout << "\nTu as gagné un total de: " << score << " points!\n  Bravo et merci d’avoir joué! :)\n" << endl;
+
+	}
+
+	return score;
+}
+
+int main()
+{
+	
+	helloUser(); // calling the funciton for name
+	string language = selectLanguage(); //calling funciton for language
+	showScore(language);
+	return 0;
+}
