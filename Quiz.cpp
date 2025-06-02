@@ -5,7 +5,6 @@ Professor Sandra Ruiz
 
 #include <iostream>
 #include <string>
-#include <ctime>
 #include <cstdlib>
 using namespace std; 
 
@@ -18,7 +17,7 @@ using namespace std;
 */
 
 string helloUser()
-{
+{ // getting name of user
 	string name;
 	cout << "Please enter your name: "; 
 	getline(cin, name);
@@ -28,11 +27,14 @@ string helloUser()
 
 string selectLanguage()
 {
+	// giving the user an option between 3 languages to play in
+
 	string langChoice;
 	cout << "This quiz has 3 world-wide-spoken language to choose from. \n" <<  "Please enter the number next to the language you chose.\n" << "1. English\n" << "2. Spanish\n" << "3. French\n" << endl;
 	getline(cin, langChoice); 
 	int choice = stoi(langChoice); // converts the choice into a number for if/else statements
 	string lang; // will be the language stored
+	//repeated logic in different language
 	if (choice == 1)
 	{
 		lang = "English";
@@ -56,46 +58,47 @@ string selectLanguage()
 
 const int numQues = 7; //number of questions = 7
 
-
+//the arrays of different fun facts around the world - repeated logic in different language
 string funFactSpanish [ ] =
 {
-	"¿Sabías que el francés se habla en cinco continentes?", 
-	"¡El español es el segundo idioma más hablado del mundo!", 
-	"¡El inglés se usa en la aviación y la diplomacia!", 
-	"¡En Japón, los estudiantes limpian sus salones!", 
-	"¡En Kenia, los niños aprenden en suajili e inglés!", 
-	"¡Finlandia comienza las clases tarde y aún así sobresale!", 
-	"¡India tiene más de 22 idiomas oficiales!"
+	"¿Sabías que el francés se habla en cinco continentes?\n", 
+	"¡El español es el segundo idioma más hablado del mundo!\n", 
+	"¡El inglés se usa en la aviación y la diplomacia!\n", 
+	"¡En Japón, los estudiantes limpian sus salones!\n", 
+	"¡En Kenia, los niños aprenden en suajili e inglés!\n", 
+	"¡Finlandia comienza las clases tarde y aún así sobresale!\n", 
+	"¡India tiene más de 22 idiomas oficiales!\n"
 }; 
 
 string funFactEnglish [ ] = 
 {
-	"Did you know? French is spoken on 5 continents!", 
-	"Spanish is the 2nd most spoken language in the world!", 
-	"English is used in international aviation and diplomacy!", 
-	"In Japan, students clean their classrooms every day!", 
-	"In Kenya, children learn in Swahili and English!", 
-	"Finland starts school later but scores high!", 
-	"India has more than 22 official languages!"
+	"Did you know? French is spoken on 5 continents!\n", 
+	"Spanish is the 2nd most spoken language in the world!\n", 
+	"English is used in international aviation and diplomacy!\n", 
+	"In Japan, students clean their classrooms every day!\n", 
+	"In Kenya, children learn in Swahili and English!\n", 
+	"Finland starts school later but scores high!\n", 
+	"India has more than 22 official languages!\n"
 };
 
 string funFactFrench [ ] = 
 {
-	"Le français est parlé sur cinq continents !", 
-	"L'espagnol est la 2e langue la plus parlée au monde !", 
-	"L'anglais est utilisé dans l'aviation et la diplomatie !", 
-	"Au Japon, les élèves nettoient leurs classes chaque jour !", 
-	"Au Kenya, les enfants apprennent le swahili et l'anglais !", 
-	"La Finlande commence l'école tard mais réussit très bien !", 
-	"L'Inde a plus de 22 langues officielles !"
+	"Le français est parlé sur cinq continents !\n", 
+	"L'espagnol est la 2e langue la plus parlée au monde !\n", 
+	"L'anglais est utilisé dans l'aviation et la diplomatie !\n", 
+	"Au Japon, les élèves nettoient leurs classes chaque jour !\n", 
+	"Au Kenya, les enfants apprennent le swahili et l'anglais !\n", 
+	"La Finlande commence l'école tard mais réussit très bien !\n", 
+	"L'Inde a plus de 22 langues officielles !\n"
 }; 
 
 // this funciton will ask the user the arithmetic 4th grade questions
 // it is a boolean because it returns true or false in terms of getting the answer correct
 // Uses random num generator to keep making questions
-bool askQues(string language, bool usedFacts[])
+bool askQues(string language, bool usedFacts[]) 
+// boolean will return 1 for true and 0 for false, so we chose to track points that way
 {
-	cout << "And....Here's a question!!!" << endl;
+	cout << "\nAnd....Here's a question!!!\n" << endl;
 
 	//assigns numbers from 0-99
 
@@ -196,7 +199,8 @@ bool askQues(string language, bool usedFacts[])
 			return input == correctAns;
 		}
 	} // end code for english 
-	else if (language == "Spanish")
+
+	else if (language == "Spanish") //spanish - repeated logic in different language
 	{
 		if (operRator == 1)
 		{
@@ -239,7 +243,7 @@ bool askQues(string language, bool usedFacts[])
 			{
 				secondNum = 1;
 			}
-			cout << "¿Cuánto es " << firstNum << "/" << secondNum << " ?" << endl;
+			cout << "¿Cuánto es " << firstNum << "/" << secondNum << " ? \nDisregard the decimal points.\n" << endl;
 			correctAns = firstNum / secondNum;
 			cin >> input;
 			cin.ignore();
@@ -272,7 +276,7 @@ bool askQues(string language, bool usedFacts[])
 			return input == correctAns;
 		}
 	}
-	else // french
+	else // french- repeated logic in different language
 	{
 		if (operRator == 1)
 		{
@@ -315,7 +319,7 @@ bool askQues(string language, bool usedFacts[])
 			{
 				secondNum = 1;
 			}
-			cout << "Combien font " << firstNum << "/" << secondNum << " ?" << endl;
+			cout << "Combien font " << firstNum << "/" << secondNum << " ? \nDisregard the decimal points.\n" << endl;
 			correctAns = firstNum / secondNum;
 			cin >> input;
 			cin.ignore();
@@ -359,10 +363,11 @@ int showScore(string language)
 	{
 		if (askQues(language, usedFacts))
 		{
+			// tracks the points from the boolean function, true = 1 and false = 0
 			score++;
 		}
 	}
-
+	// goodbye message with score presentation in specified language
 	if (language == "English")
 	{
 		cout << "\nYou earned a total of: " << score << " points!\n Great job and thank you for playing! :)\n" << endl;
@@ -385,9 +390,8 @@ int showScore(string language)
 
 int main()
 {
-	
 	helloUser(); // calling the funciton for name
 	string language = selectLanguage(); //calling funciton for language
-	showScore(language);
+	showScore(language); // runs askQues() function with in and tracks the score
 	return 0;
 }
