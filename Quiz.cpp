@@ -22,6 +22,12 @@ Bruno Ceron
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <ctime> 
+
+//We found that we were cointenuisely getting the same questions generated, so we decided to
+//find a work aorund that by including the ctime package to have different random values 
+// each time the program is run
+
 using namespace std; 
 const int numQues = 7; //number of questions = 7
 
@@ -272,7 +278,7 @@ bool askQues(string language, bool usedFacts[])
 		}
 		else
 		{
-			cout << "¿Cuánto es " << firstNum << "x" << secondNum << " ?" << endl;
+			cout << "¿Cuanto es " << firstNum << "x" << secondNum << " ?" << endl;
 			correctAns = firstNum * secondNum;
 			cin >> input;
 			cin.ignore();
@@ -385,18 +391,18 @@ int showScore(string language)
 	// goodbye message with score presentation in specified language
 	if (language == "English")
 	{
-		cout << "\nYou earned a total of: " << score << " points!\n Great job and thank you for playing! :)\n" << endl;
+		cout << "You earned a total of: " << score << " points!\nGreat job and thank you for playing! :)\n" << endl;
 	}
 
 	else if (language == "Spanish")
 	{
-		cout << "\n¡Ganaste un total de: " << score << " puntos!\n ¡Buen trabajo y gracias por jugar! :)\n" << endl;
+		cout << "¡Ganaste un total de: " << score << " puntos!\n¡Buen trabajo y gracias por jugar! :)\n" << endl;
 
 	}
 
 	else //french
 	{
-		cout << "\nTu as gagné un total de: " << score << " points!\n  Bravo et merci d’avoir joué! :)\n" << endl;
+		cout << "Tu as gagné un total de: " << score << " points!\nBravo et merci d’avoir joué! :)\n" << endl;
 
 	}
 
@@ -405,6 +411,7 @@ int showScore(string language)
 
 int main()
 {
+	srand(time(0));
 	helloUser(); // calling the funciton for name
 	string language = selectLanguage(); //calling funciton for language
 	showScore(language); // runs askQues() function with in and tracks the score
