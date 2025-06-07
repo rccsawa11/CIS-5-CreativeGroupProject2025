@@ -26,7 +26,7 @@ Bruno Ceron
 
 //We found that we were cointenuisely getting the same questions generated, so we decided to
 //find a work aorund that by including the ctime package to have different random values 
-// each time the program is run
+//each time the program is run
 
 using namespace std; 
 const int numQues = 7; //number of questions = 7
@@ -62,7 +62,7 @@ string selectLanguage()
 	else if (choice == 2)
 	{
 		lang = "Spanish";
-		cout << "\nHas seleccionado el espanol." << endl;
+		cout << "\nHaz seleccionado ." << endl;
 
 	}
 	else
@@ -78,13 +78,13 @@ string selectLanguage()
 // repeated logic in all different languages
 string funFactSpanish [ ] =
 {
-	"¿Sabías que el francés se habla en cinco continentes?\n", 
-	"¡El español es el segundo idioma más hablado del mundo!\n", 
-	"¡El inglés se usa en la aviación y la diplomacia!\n", 
-	"¡En Japón, los estudiantes limpian sus salones!\n", 
-	"¡En Kenia, los niños aprenden en suajili e inglés!\n", 
-	"¡Finlandia comienza las clases tarde y aún así sobresale!\n", 
-	"¡India tiene más de 22 idiomas oficiales!\n"
+	"Sabias que el frances se habla en cinco continentes?\n", 
+	"Sabias que chespirito interpreto a mas de 10 personajes en television!\n", 
+	"Los tacos de  pastor son los mas famosos de todo el mundo!\n", 
+	"Los Angeles es la segunda ciudad con mas mexicanos en el mundo!\n", 
+	"El chicharito es el maximo goleador de la seleccion mexicana de futbol!\n", 
+	"Mexico es el tercer pais mas visitado en las vacaciones en el mundo!\n", 
+	"Avatar es la pelicula que mas dinero ha recaudado de la historia!\n"
 }; 
 
 string funFactEnglish [ ] = 
@@ -222,13 +222,13 @@ bool askQues(string language, bool usedFacts[])
 	{
 		if (operRator == 1)
 		{
-			cout << "¿Cuánto es " << firstNum << "+" << secondNum << " ?" << endl;
+			cout << "Cuanto es " << firstNum << "+" << secondNum << " ?" << endl;
 			correctAns = firstNum + secondNum;
 			cin >> input;
 			cin.ignore();
 			if (input == correctAns)
 			{
-				cout << "\n¡Buen trabajo! + 1 punto para ti.\n" << endl;
+				cout << "\nBuen trabajo! +1 punto para ti.\n" << endl;
 				cout << funFactSpanish[factIndex] << endl;
 			}
 			else
@@ -240,13 +240,13 @@ bool askQues(string language, bool usedFacts[])
 		}
 		else if (operRator == 2)
 		{
-			cout << "¿Cuánto es " << firstNum << "-" << secondNum << " ?" << endl;
+			cout << "Cuanto es " << firstNum << "-" << secondNum << " ?" << endl;
 			correctAns = firstNum - secondNum;
 			cin >> input;
 			cin.ignore();
 			if (input == correctAns)
 			{
-				cout << "\n¡Buen trabajo! + 1 punto para ti.\n" << endl;
+				cout << "\n Buen trabajo!  +1 punto para ti.\n" << endl;
 				cout << funFactSpanish[factIndex] << endl;
 			}
 			else
@@ -261,13 +261,13 @@ bool askQues(string language, bool usedFacts[])
 			{
 				secondNum = 1;
 			}
-			cout << "¿Cuánto es " << firstNum << "/" << secondNum << " ? \nDisregard the decimal points.\n" << endl;
+			cout << "Cuanto es " << firstNum << "/" << secondNum << " ? \nSin importar el punto decimal.\n" << endl;
 			correctAns = firstNum / secondNum;
 			cin >> input;
 			cin.ignore();
 			if (input == correctAns)
 			{
-				cout << "\n¡Buen trabajo! + 1 punto para ti.\n" << endl;
+				cout << "\nBuen trabajo! +1 punto para ti.\n" << endl;
 				cout << funFactSpanish[factIndex] << endl;
 			}
 			else
@@ -278,13 +278,13 @@ bool askQues(string language, bool usedFacts[])
 		}
 		else
 		{
-			cout << "¿Cuanto es " << firstNum << "x" << secondNum << " ?" << endl;
+			cout << "Cuanto es " << firstNum << "x" << secondNum << " ?" << endl;
 			correctAns = firstNum * secondNum;
 			cin >> input;
 			cin.ignore();
 			if (input == correctAns)
 			{
-				cout << "\n¡Buen trabajo! + 1 punto para ti.\n" << endl;
+				cout << "\nBuen trabajo!  +1 punto para ti.\n" << endl;
 				cout << funFactSpanish[factIndex] << endl;
 			}
 			else
@@ -309,7 +309,7 @@ bool askQues(string language, bool usedFacts[])
 			}
 			else
 			{
-				cout << "\nOups... mauvaise réponse.\n" << endl;
+				cout << "\nOups... mauvaise reponse.\n" << endl;
 			}
 
 			return input == correctAns;
@@ -327,7 +327,7 @@ bool askQues(string language, bool usedFacts[])
 			}
 			else
 			{
-				cout << "\nOups... mauvaise réponse.\n" << endl;
+				cout << "\nOups... mauvaise reponse.\n" << endl;
 			}
 			return input == correctAns;
 		}
@@ -337,7 +337,7 @@ bool askQues(string language, bool usedFacts[])
 			{
 				secondNum = 1;
 			}
-			cout << "Combien font " << firstNum << "/" << secondNum << " ? \nDisregard the decimal points.\n" << endl;
+			cout << "Combien font " << firstNum << "/" << secondNum << " ? \nSin importar el punto decimal.\n" << endl;
 			correctAns = firstNum / secondNum;
 			cin >> input;
 			cin.ignore();
@@ -348,7 +348,7 @@ bool askQues(string language, bool usedFacts[])
 			}
 			else
 			{
-				cout << "\nOups... mauvaise réponse.\n" << endl;
+				cout << "\nOups... mauvaise reponse.\n" << endl;
 			}
 			return input == correctAns;
 		}
@@ -365,7 +365,7 @@ bool askQues(string language, bool usedFacts[])
 			}
 			else
 			{
-				cout << "\nOups... mauvaise réponse.\n" << endl;
+				cout << "\nOups... mauvaise reponse.\n" << endl;
 			}
 			return input == correctAns;
 		}//end french questions
@@ -396,13 +396,13 @@ int showScore(string language)
 
 	else if (language == "Spanish")
 	{
-		cout << "¡Ganaste un total de: " << score << " puntos!\n¡Buen trabajo y gracias por jugar! :)\n" << endl;
+		cout << "Ganaste un total de: " << score << " puntos!\nBuen trabajo y gracias por jugar! :)\n" << endl;
 
 	}
 
 	else //french
 	{
-		cout << "Tu as gagné un total de: " << score << " points!\nBravo et merci d’avoir joué! :)\n" << endl;
+		cout << "Tu as gagne un total de: " << score << " points!\nBravo et merci d’avoir joué! :)\n" << endl;
 
 	}
 
