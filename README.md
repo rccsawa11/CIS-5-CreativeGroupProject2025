@@ -17,6 +17,7 @@ C++ Programming Concepts Used
 -Download the Quiz.cpp file where all of the code is stored. 
 -Open terminal or command prompt
 -Complie program
+-Go to the scores.txt file to view final score
 
 Dependencies:
 
@@ -30,6 +31,6 @@ Leen Sawas
 Bruno Ceron
 
 
-#### README credit to Bruno Ceron 
+#### README credit to Bruno Ceron and Anastasio Jose Martin
 
 
