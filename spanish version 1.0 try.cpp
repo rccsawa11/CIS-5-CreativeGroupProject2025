@@ -2,13 +2,14 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include <windows.h> // Needed for SetConsoleOutputCP
+
 
 using namespace std;
 
 const int numQues = 7;
 
-string selectLanguage() {
+string selectLanguage() 
+{
     string langChoice;
     cout << "Please select a language / Por favor selecciona un idioma / Veuillez sélectionner une langue:\n";
     cout << "1. English\n2. Español\n3. Français\n" << endl;
@@ -26,13 +27,14 @@ string selectLanguage() {
     }
     else {
         lang = "French";
-        cout << "\nVous avez choisi le français." << endl;
+        cout << "\nVous avez choisi le francais." << endl;
     }
 
     return lang;
 }
 
-string helloUser(string language) {
+string helloUser(string language) 
+{
     string name;
     if (language == "English") {
         cout << "\nPlease enter your name: ";
@@ -60,16 +62,8 @@ string helloUser(string language) {
 }
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);  // Enables UTF-8 output
     srand(time(0));
-
-    string language = selectLanguage(); // STEP 1: Ask for language
-    string name = helloUser(language);  // STEP 2: Ask for name in that language
-
-    // Test line to verify special characters
-    cout << "\nLanguage test: español, façade, jalapeño, français, naïve, élève.\n" << endl;
-
-    // You can plug in your full quiz logic here next (showScore, askQues, etc.)
-
+    string language = selectLanguage(); 
+    string name = helloUser(language);  
     return 0;
 }

@@ -23,6 +23,7 @@ Bruno Ceron
 #include <string>
 #include <cstdlib>
 #include <ctime> 
+#include <fstream>
 
 //We found that we were cointenuisely getting the same questions generated, so we decided to
 //find a work aorund that by including the ctime package to have different random values 
@@ -31,13 +32,33 @@ Bruno Ceron
 using namespace std; 
 const int numQues = 7; //number of questions = 7
 
-string helloUser()
-{ // getting name of user by using cin for them to type in and retrive a string to store into 'name' variable
-	string name;
-	cout << "Please enter your name: "; 
-	getline(cin, name);
-	cout << "Hello and Welcome to the SUPER AWESOME MATH QUIZ " << name << "!" << endl;
-	return name; 
+// getting name of user by using cin for them to type in and retrive a string to store into 'name' variable
+string helloUser(string language)
+{
+		string name;
+		if (language == "English") {
+			cout << "\nPlease enter your name: ";
+		}
+		else if (language == "Spanish") {
+			cout << "\nPor favor, ingresa tu nombre: ";
+		}
+		else {
+			cout << "\nVeuillez entrer votre nom : ";
+		}
+
+		getline(cin, name);
+
+		if (language == "English") {
+			cout << "\nHello and welcome to the SUPER AWESOME MATH QUIZ, " << name << "!" << endl;
+		}
+		else if (language == "Spanish") {
+			cout << "\nHola y bienvenido al SUPER INCREIBLE QUIZ DE MATEMATICAS, " << name << "!" << endl;
+		}
+		else {
+			cout << "\nBonjour et bienvenue au SUPER QUIZ DE MATHEMATIQUES, " << name << "!" << endl;
+		}
+
+		return name;
 }
 
 string selectLanguage()
@@ -49,8 +70,9 @@ string selectLanguage()
 	// 1 = English, 2 = Spanish, 3 = French
 
 	string langChoice;
-	cout << "This quiz has 3 world-wide-spoken language to choose from. \n" <<  "Please enter the number next to the language you chose.\n" << "1. English\n" << "2. Spanish\n" << "3. French\n" << endl;
-	getline(cin, langChoice); 
+	cout << "Please select a language / Por favor selecciona un idioma / Veuillez sélectionner une langue:\n";
+	cout << "1. English\n2. Espanol\n3. Francais\n" << endl;
+	getline(cin, langChoice);
 	int choice = stoi(langChoice); // converts the choice into a number for if/else statements
 	string lang; // will be the language stored
 	//repeated logic in different language
@@ -62,7 +84,7 @@ string selectLanguage()
 	else if (choice == 2)
 	{
 		lang = "Spanish";
-		cout << "\nHaz seleccionado ." << endl;
+		cout << "\nHas seleccionado espanol." << endl;
 
 	}
 	else
@@ -78,35 +100,35 @@ string selectLanguage()
 // repeated logic in all different languages
 string funFactSpanish [ ] =
 {
-	"Sabias que el frances se habla en cinco continentes?\n", 
-	"Sabias que chespirito interpreto a mas de 10 personajes en television!\n", 
-	"Los tacos de  pastor son los mas famosos de todo el mundo!\n", 
-	"Los Angeles es la segunda ciudad con mas mexicanos en el mundo!\n", 
-	"El chicharito es el maximo goleador de la seleccion mexicana de futbol!\n", 
-	"Mexico es el tercer pais mas visitado en las vacaciones en el mundo!\n", 
-	"Avatar es la pelicula que mas dinero ha recaudado de la historia!\n"
+	"Aqui hay un dato curioso!\nSabias que el frances se habla en cinco continentes?\n", 
+	"Aqui hay un dato curioso!\nSabias que chespirito interpreto a mas de 10 personajes en television!\n", 
+	"Aqui hay un dato curioso!\nLos tacos de pastor son los mas famosos de todo el mundo!\n", 
+	"Aqui hay un dato curioso!\nLos Angeles es la segunda ciudad con mas mexicanos en el mundo!\n", 
+	"Aqui hay un dato curioso!\nEl chicharito es el maximo goleador de la seleccion mexicana de futbol!\n", 
+	"Aqui hay un dato curioso!\nMexico es el tercer pais mas visitado en las vacaciones en el mundo!\n", 
+	"Aqui hay un dato curioso!\nAvatar es la pelicula que mas dinero ha recaudado de la historia!\n"
 }; 
 
 string funFactEnglish [ ] = 
 {
-	"Did you know? French is spoken on 5 continents!\n", 
-	"Spanish is the 2nd most spoken language in the world!\n", 
-	"English is used in international aviation and diplomacy!\n", 
-	"In Japan, students clean their classrooms every day!\n", 
-	"In Kenya, children learn in Swahili and English!\n", 
-	"Finland starts school later but scores high!\n", 
-	"India has more than 22 official languages!\n"
+	"Here's a fun fact!\nDid you know? French is spoken on 5 continents!\n", 
+	"Here's a fun fact!\nSpanish is the 2nd most spoken language in the world!\n", 
+	"Here's a fun fact!\nEnglish is used in international aviation and diplomacy!\n", 
+	"Here's a fun fact!\nIn Japan, students clean their classrooms every day!\n", 
+	"Here's a fun fact!\nIn Kenya, children learn in Swahili and English!\n", 
+	"Here's a fun fact!\nFinland starts school later but scores high!\n", 
+	"Here's a fun fact!\nIndia has more than 22 official languages!\n"
 };
 
 string funFactFrench [ ] = 
 {
-	"Le français est parlé sur cinq continents !\n", 
-	"L'espagnol est la 2e langue la plus parlée au monde !\n", 
-	"L'anglais est utilisé dans l'aviation et la diplomatie !\n", 
-	"Au Japon, les élèves nettoient leurs classes chaque jour !\n", 
-	"Au Kenya, les enfants apprennent le swahili et l'anglais !\n", 
-	"La Finlande commence l'école tard mais réussit très bien !\n", 
-	"L'Inde a plus de 22 langues officielles !\n"
+	"Voici un fait amusant !\nLe francais est parle sur cinq continents !\n", 
+	"Voici un fait amusant !\nL'espagnol est la 2e langue la plus parlee au monde !\n", 
+	"Voici un fait amusant !\nL'anglais est utilise dans l'aviation et la diplomatie !\n", 
+	"Voici un fait amusant !\nAu Japon, les eleves nettoient leurs classes chaque jour !\n", 
+	"Voici un fait amusant !\nAu Kenya, les enfants apprennent le swahili et l'anglais !\n", 
+	"Voici un fait amusant !\nLa Finlande commence l'ecole tard mais reussit tres bien !\n", 
+	"Voici un fait amusant !\nL'Inde a plus de 22 langues officielles !\n"
 }; 
 
 // this funciton will ask the user the arithmetic 4th grade questions
@@ -115,11 +137,7 @@ string funFactFrench [ ] =
 bool askQues(string language, bool usedFacts[]) 
 // boolean will return 1 for true and 0 for false, so we chose to track points that way
 {
-	cout << "\nAnd....Here's a question!!!\n" << endl;
-
-	//assigns numbers from 0-99
-
-	const int maxNum = 20;
+	const int maxNum = 20; //assigns numbers from 0-20
 	int firstNum = rand() % maxNum;
 	int secondNum = rand() % maxNum;
 	int correctAns; 
@@ -246,7 +264,7 @@ bool askQues(string language, bool usedFacts[])
 			cin.ignore();
 			if (input == correctAns)
 			{
-				cout << "\n Buen trabajo!  +1 punto para ti.\n" << endl;
+				cout << "\nBuen trabajo!  +1 punto para ti.\n" << endl;
 				cout << funFactSpanish[factIndex] << endl;
 			}
 			else
@@ -377,43 +395,55 @@ bool askQues(string language, bool usedFacts[])
 // tracks the points from the boolean function, true = 1 and false = 0
 // It also calls askQues() function 7 times and adds score using a for loop
 // Uses constant numQues
+// It writes to an external file
 int showScore(string language)
 {
-	int score = 0;
-	bool usedFacts[numQues] = { false }; 
-	for (int i = 0; i < numQues; i++)
+
+	ofstream outFile("scores.txt"); 
+
+	if (outFile.is_open()) // writing to an external file
 	{
-		if (askQues(language, usedFacts))
+		int score = 0;
+		bool usedFacts[numQues] = { false };
+		for (int i = 0; i < numQues; i++)
 		{
-			score++;
+			if (askQues(language, usedFacts))
+			{
+				score++;
+			}
 		}
+		// goodbye message with score presentation in specified language
+		if (language == "English")
+		{
+			outFile << "You earned a total of: " << score << " points!\nGreat job and thank you for playing! :)\n" << endl;
+			outFile.close();
+		}
+
+		else if (language == "Spanish")
+		{
+			outFile << "Ganaste un total de: " << score << " puntos!\nBuen trabajo y gracias por jugar! :)\n" << endl;
+			outFile.close();
+		}
+
+		else //french
+		{
+			outFile << "Tu as gagne un total de: " << score << " points!\nBravo et merci d’avoir joue! :)\n" << endl;
+			outFile.close();
+		}
+
+		return score;
 	}
-	// goodbye message with score presentation in specified language
-	if (language == "English")
+	else
 	{
-		cout << "You earned a total of: " << score << " points!\nGreat job and thank you for playing! :)\n" << endl;
+		cout << "Unable to write file." << endl;
 	}
-
-	else if (language == "Spanish")
-	{
-		cout << "Ganaste un total de: " << score << " puntos!\nBuen trabajo y gracias por jugar! :)\n" << endl;
-
-	}
-
-	else //french
-	{
-		cout << "Tu as gagne un total de: " << score << " points!\nBravo et merci d’avoir joué! :)\n" << endl;
-
-	}
-
-	return score;
 }
 
 int main()
 {
 	srand(time(0));
-	helloUser(); // calling the funciton for name
 	string language = selectLanguage(); //calling funciton for language
+	helloUser(language); // calling the funciton for name
 	showScore(language); // runs askQues() function with in and tracks the score
 	return 0;
 }
